@@ -1,6 +1,7 @@
 /*
-Code template for setting up Serial, IMU, Bluetooth taken from example at https://github.com/ucla-hci/m119/blob/main/m2b_peripheral/m2b_peripheral.ino
-Used to ensure overall code is structured well, uses ArduinoBLE correctly and is consistent with the Noble/Node.js server example.
+Where:  taken from example at https://github.com/ucla-hci/m119/blob/main/m2b_peripheral/m2b_peripheral.ino
+What: Code template for setting up Serial, IMU, and BLE service and characteristic for sending accelerometer data.
+Why: Used to ensure overall code is structured well, uses ArduinoBLE correctly and is consistent with the Noble/Node.js server example.
 */
 
 #include <ArduinoBLE.h>
