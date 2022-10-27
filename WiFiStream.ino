@@ -3,11 +3,12 @@
 //Why: Code is needed in order to use WiFiNINA module and follow the example given to connect to WiFi
 
 #include <WiFiNINA.h>
-#include <Secret.h>
+#include "Secret.h"
 
 //please enter your sensitive data in the Secret tab
 char ssid[] = SECRET_SSID;                // your network SSID (name)
 char pass[] = SECRET_PASS;                // your network password (use for WPA, or use as key for WEP)
+//char username[] = SECRET_USER
 int status = WL_IDLE_STATUS;             // the Wi-Fi radio's status
 int ledState = LOW;                       //ledState used to set the LED
 unsigned long previousMillisInfo = 0;     //will store last time Wi-Fi information was updated
@@ -28,7 +29,7 @@ void setup() {
     Serial.println(ssid);
     // Connect to WPA/WPA2 network:
     status = WiFi.begin(ssid, pass);
-
+    //WiFi.beginEnterprise(ssid, username, pass);
     // wait 10 seconds for connection:
     delay(10000);
   }
