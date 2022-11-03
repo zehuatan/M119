@@ -1,5 +1,6 @@
-//Based on the example at https://github.com/noble/noble/blob/master/examples/pizza/central.js
-//Used to know how to use noble to connect to a peripheral
+//Where: Based on the example at https://github.com/noble/noble/blob/master/examples/pizza/central.js
+//What: Link serves as an example/template of how to use noble to discover and connect to peripherals, access their services and characteristics.
+//Why: Helps ensure BLE is being used correctly while debugging/learn how to use noble.
 
 const noble = require('noble-winrt');
 
@@ -19,7 +20,6 @@ noble.on('stateChange', state => {
 });
 
 noble.on('discover', function(peripheral){
-  //console.log('Found peripheral:', peripheral.advertisement.serviceUuids);  
   if (JSON.stringify(peripheral.advertisement.serviceUuids) === JSON.stringify([ '13333333-3333-3333-3333-333333333337' ]))
   {
     console.log('yipee!');
@@ -48,7 +48,6 @@ noble.on('discover', function(peripheral){
       })
     })
   }
-  
 });
 
 
