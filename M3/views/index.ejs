@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+</head>
+
+<body>
+	<div>
+        <!--Image taken from https://docs.arduino.cc/hardware/nano-33-iot, M3/public/arduino.png-->
+        <img id="rotate" src="arduino.png" width="500" height="500">
+	</div>
+</body>
+
+<!--Where: Code taken from https://github.com/ucla-hci/m119/blob/main/m3/views/index.ejs-->
+<!--What: Code sets up the template for express html and allows Arduino data to modify DOM elements via javascript-->
+<!--Why: With the code template, it is easier to focus on implementation details of how to map IMU data to visuals -->
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script type="application/javascript">
+	const SERVERADDRESS = "http://127.0.0.1:3000"
+	// use XML HTTP request to grab data from the server (central)
+	let xmlhttp = new XMLHttpRequest()
+	var tilt = 0;
+	xmlhttp.onreadystatechange = function () {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			let responseText = xmlhttp.responseText
+			let sensorValue = parseFloat(JSON.parse(responseText).sensorValue)
+			let rotate = document.getElementById('rotate');
+			tilt += (sensorValue - 2.4) / 40;
+			console.log(tilt);
+			rotate.style.transform = 'rotate(' + tilt + 'deg)';
+		}
+	}
+	// periodically grab data
+	let getData = () => {
+		xmlhttp.open("POST", SERVERADDRESS, true)
+		xmlhttp.setRequestHeader("Content-type", "application/json")
+		xmlhttp.send("")
+		setTimeout(() => {
+			getData()
+		}, 25)
+	}
+	getData()
+</script>
+
+</html>
