@@ -371,24 +371,26 @@ function loop() {
 
   
   if (sensorValue1 < -0.8) {
-    leftPaddle.dy = -5;
+    leftPaddle.dy = -paddleSpeed;
   }
   else if (sensorValue1 > 0.8) {
-    leftPaddle.dy = 5;
+    leftPaddle.dy = paddleSpeed;
   }
   else {
     leftPaddle.dy = 0;
   }
 
+  
   if (sensorValue2 < -0.8) {
-    rightPaddle.dy = -5;
+    rightPaddle.dy = -paddleSpeed;
   }
   else if (sensorValue2 > 0.8) {
-    rightPaddle.dy = 5;
+    rightPaddle.dy = paddleSpeed;
   }
   else {
     rightPaddle.dy = 0;
   }
+  
 
   
 
@@ -400,7 +402,7 @@ function loop() {
   console.log('p2: ' + sensorValue2);
   */
 
-/*
+
   rightPaddle.dy = (rightPaddle.y - ball.y) > 0 ? paddleSpeed : -paddleSpeed;
   if (ball.dx > 0) {
     if (rightPaddle.y - ball.y < 0) {
@@ -416,7 +418,7 @@ function loop() {
   else {
     rightPaddle.dy = 0;
   }
-*/
+
 
 }
 
